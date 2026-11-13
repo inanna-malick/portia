@@ -1,0 +1,21 @@
+[package]
+name = "portia-compiler"
+version.workspace = true
+edition.workspace = true
+license-file.workspace = true
+authors.workspace = true
+description = "Portia Pointer-ISA & Subspace Weight Compiler (faer SIMD/Rayon + Clarabel + GQA ASID + AlphaEdit+ + Concolic MAP-Elites)"
+
+[dependencies]
+portia-core = { path = "../portia-core" }
+clarabel.workspace = true
+faer.workspace = true
+half.workspace = true
+recursion.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+sha2.workspace = true
+thiserror.workspace = true
+
+[dev-dependencies]
+proptest.workspace = true

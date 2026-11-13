@@ -1,0 +1,33 @@
+[package]
+name = "portia-cli"
+version.workspace = true
+edition.workspace = true
+license-file.workspace = true
+
+[dependencies]
+portia-core = { path = "../portia-core" }
+portia-compiler = { path = "../portia-compiler" }
+portia-garak = { path = "../portia-garak" }
+portia-nursery = { path = "../portia-nursery" }
+portia-sql = { path = "../portia-sql" }
+safetensors-surgeon = { path = "../safetensors-surgeon" }
+anyhow.workspace = true
+thiserror.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+sha2.workspace = true
+clap.workspace = true
+rusqlite.workspace = true
+sqlparser.workspace = true
+iocraft.workspace = true
+smol.workspace = true
+futures.workspace = true
+crossterm.workspace = true
+unicode-width.workspace = true
+rustyline = "17.0.2"
+tempfile = "3.10"
+
+[dev-dependencies]
+half.workspace = true
+proptest.workspace = true
+safetensors.workspace = true

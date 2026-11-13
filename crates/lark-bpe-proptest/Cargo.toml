@@ -1,0 +1,20 @@
+[package]
+name = "lark-bpe-proptest"
+version.workspace = true
+edition.workspace = true
+license-file.workspace = true
+authors.workspace = true
+description = "Pure-Rust llguidance grammar verification and straddled-BPE proptest fuzzing library."
+
+[dependencies]
+llguidance.workspace = true
+proptest.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+thiserror.workspace = true
+toktrie.workspace = true
+toktrie_hf_tokenizers.workspace = true
+
+[dev-dependencies]
+regex = "1"
+tempfile.workspace = true

@@ -1,0 +1,47 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/portia-core",
+    "crates/portia-compiler",
+    "crates/portia-nursery",
+    "crates/portia-garak",
+    "crates/portia-sql",
+    "crates/portia-cli",
+    "crates/safetensors-surgeon",
+    "crates/lark-bpe-proptest",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+license-file = "LICENSE"
+authors = ["Inanna Malick"]
+
+[workspace.dependencies]
+anyhow = "1.0"
+thiserror = "2.0"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+sha2 = "0.10"
+half = { version = "2.4", features = ["serde", "num-traits"] }
+safetensors = "0.8"
+memmap2 = "0.9"
+tempfile = "3.10"
+faer = { version = "0.24", default-features = false, features = ["std", "rayon", "linalg"] }
+clarabel = "0.9"
+rusqlite = { version = "0.32", features = ["bundled", "hooks", "preupdate_hook", "backup", "functions", "serde_json"] }
+sqlparser = { version = "0.52", features = ["visitor", "serde"] }
+proptest = "1.5"
+clap = { version = "4.5", features = ["derive"] }
+recursion = "0.5"
+iocraft = "0.9"
+smol = "2"
+futures = "0.3"
+crossterm = "0.29"
+unicode-width = "0.2"
+tree-sitter = "0.24"
+tree-sitter-rust = "0.23"
+syn = { version = "2", features = ["full", "visit", "extra-traits"] }
+llguidance = "1.9"
+toktrie = "1.9"
+toktrie_hf_tokenizers = "1.9"

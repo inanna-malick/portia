@@ -1,0 +1,19 @@
+[package]
+name = "portia-garak"
+version.workspace = true
+edition.workspace = true
+license-file.workspace = true
+authors.workspace = true
+description = "Static Permanent-Scope Weight-Surgery Specs & Non-Circular Post-Anchor Detectors for NVIDIA/garak Probes"
+
+[dependencies]
+anyhow.workspace = true
+portia-core = { path = "../portia-core" }
+portia-compiler = { path = "../portia-compiler" }
+serde.workspace = true
+serde_json.workspace = true
+thiserror.workspace = true
+
+[dev-dependencies]
+half.workspace = true
+proptest.workspace = true

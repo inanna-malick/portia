@@ -1,0 +1,70 @@
+# How `Portia` Works: Runtime, `Qwen3.5` Architecture, & Scaling
+
+> Back to **[`README.md`](../README.md)** · See also: **[`docs/DSL_AND_HYLO.md`](DSL_AND_HYLO.md)** · **[`docs/ARCHITECTURE_AND_EXPLOITS.md`](ARCHITECTURE_AND_EXPLOITS.md)** · **[`docs/VISION.md`](VISION.md)**
+
+---
+
+## 1. Static vs. Dynamic Weights (`SpanCartridge = ΔW_slots × Option<Grammar>`)
+
+Can you program a language model's weights directly—like compiling code—instead of training it with gradient descent?
+
+Last year, Rikiya T.'s *[Sparks of Weight-Space Programming](https://rikiyat.github.io/blog/weight-space-programming/)* showed that you can hand-wire a single logic gate inside a transformer's feed-forward (`MLP`) layer without backpropagation. **`Portia` takes that idea from a 1-neuron breadboard spark to a compiler and multi-turn runtime.**
+
+- **A Portia Cartridge ([`SpanCartridge`](../crates/portia-core/src/relay/mod.rs)) is weight surgery paired with an optional context-specific constrained grammar:** Each [`SpanCartridge`](../crates/portia-core/src/relay/mod.rs) pairs a targeted weight bank ([`CartridgeBank`](../crates/portia-core/src/lib.rs): compiled neuron slots that steer semantic choices) with an optional context-specific constrained grammar ([`GrammarCartridgeSpec`](../crates/portia-core/src/relay/mod.rs): `LiteralSet`, `.lark` EBNF, or JSON Schema via [`llguidance`](https://github.com/guidance-ai/llguidance) and [`tree-sitter`](https://tree-sitter.github.io/) that enforces syntax and live database schema rules).
+- **Why static weight edits fail on multi-turn agents:** In a multi-turn task, the model has to do different jobs on different turns (inspect a schema on Turn 0, ask the user a clarifying question on Turn 1, run an `UPDATE` on Turn 2, and summarize the result on Turn 3). If you permanently edit a model's weights to force a `SELECT` query on Turn 0, that same weight edit will fight you on Turn 1 when the model needs to ask a question or write an `UPDATE`.
+- **Dynamic span cartridges (like bank-switching ROM cartridges on a Game Boy):** Standard LLM inference treats activations (the `KV` cache) as dynamic and weights as static concrete loaded once at startup. `Portia` leaves **100% of the base model's pretrained weights untouched** and dynamically hot-swaps tiny **`0.885 MB` weight cartridges** (`2–128` neuron columns) together with their [`GrammarCartridgeSpec`](../crates/portia-core/src/relay/mod.rs) across all three trunk-generated phases (`ModeLabel` at `[MODE:` followed by `]\nPlan:`, `PlanBody`, and `PayloadBody` inside `<sql> ... </sql>` or `<to_user> ... </to_user>`). When the tag closes, both the weight patch and the grammar automaton detach—while the model's entire conversation memory (`KV` cache and `DeltaNet` recurrent state) stays live in GPU memory with zero re-reading.
+- **Or link them into a single standard `.safetensors` file:** Because each cartridge neuron is wired with a reverse-biased "diode" gate ($\le -8.0$) that stays shut (`0.0`) outside its target context, you can also export cartridges directly into a standard HuggingFace `.safetensors` checkpoint (`portia-cli export-safetensors`, `M -> M + K` neurons wide in `< 12 MiB` RAM) that runs out of the box on unmodified `vLLM`, `Transformers`, or `llama.cpp` with zero runtime hooks.
+
+---
+
+## 2. The Single-Pen Handoff (`|ActivePen(t)| == 1`) & `SpanCartridge` Phase Table
+
+A multi-turn agent turn has two very different kinds of tokens:
+1. **Hard syntax and schema boundaries:** Structural framing like `<|im_start|>assistant\n<think>\n[MODE:` or closing tags, plus strict grammar and database schema rules (a SQL query cannot violate [`grammars/upstream/sqlite.lark`](../grammars/upstream/sqlite.lark) or reference a column that doesn't exist in `PRAGMA table_info`, and a Rust hole patch must parse cleanly under `tree-sitter-rust`). Wasting neural weight capacity memorizing column names or language grammar rules is pointless when an off-the-shelf `.lark` / `tree-sitter` grammar cartridge can enforce them directly.
+2. **Semantic decisions:** Deciding *whether* the user's request requires inspecting the database (`READ`), asking a human governance reviewer (`Steward`) for permission (`ASK`), executing a write (`WRITE`), or refusing (`ABSTAIN`)—and choosing *which* grammatically valid tables, joins, predicates, or prose responses match the user's intent.
+
+[`RelayMachine`](../crates/portia-core/src/relay/mod.rs) coordinates these across a strict **Single-Pen Handoff** (`|ActivePen(t)| == 1`), mounting the exact [`SpanCartridge`](../crates/portia-core/src/relay/mod.rs) (`(CartridgeBank, GrammarCartridgeSpec)`) for each [`RelayPhase`](../crates/portia-core/src/relay/mod.rs):
+
+| [`RelayPhase`](../crates/portia-core/src/relay/mod.rs) | Active Pen (`\|ActivePen(t)\| == 1`) | Mounted Weight Cartridge ([`CartridgeBank`](../crates/portia-core/src/lib.rs)) | Co-Mounted Grammar Cartridge ([`GrammarCartridgeSpec`](../crates/portia-core/src/relay/mod.rs)) | What Happens in This Span |
+| :--- | :--- | :--- | :--- | :--- |
+| **`TurnOpenPrefill` / `PostModePrefill` / `PostPlanPrefill`** | `HarnessPen` | `OrientTrunk` $\to$ `ModePayload(mode)` | Deterministic framing literal | Rust prefills `<|im_start|>assistant\n<think>\n[MODE:`, post-mode header `]\nPlan:`, and `</think>\n<sql>\n` or `</think>\n<to_user>\n` into the live `KV` / `DeltaNet` state. |
+| **`ModeLabel`** | `RouterPen` | `CartridgeBank::OrientTrunk` | `LiteralSet([" PROBE]", " READ]", " ASK]", " WRITE]", " RESULT]", " ABSTAIN]"])` (filtered by `legal_modes()`) | Routes the epistemic mode decision across natural BPE mode tokens (`" PRO"`, `" READ"`, `" ASK"`, `" WRITE"`, `" RESULT"`, `" AB"`) up to `]` (`tid = 60`). |
+| **`PlanBody`** | `PayloadPen` | `CartridgeBank::ModePayload(mode)` | `LarkGrammar(PLAN_BODY_SINGLE_LINE_LARK)` | Single-line natural-language reasoning (`Plan: ...` up to `\n`) before the outbound route tag opens. |
+| **`PayloadBody` (`<sql>` SQLite)** | `PayloadPen` | `CartridgeBank::ModePayload(Probe \| Read \| Write)` | `LarkGrammar` ([`grammars/upstream/sqlite.lark`](../grammars/upstream/sqlite.lark) + causal [`EpistemicSqlGrammarCartridge`](../crates/portia-sql/src/grammar_trie/mod.rs) via [`llguidance`](https://github.com/guidance-ai/llguidance)) | Enforces valid SQLite grammar (`JOIN`, `LEFT JOIN`, `COUNT(*)`, `>=`, `UPDATE`) and probed `PRAGMA table_info` schema identifiers up to `</sql>` while the weight cartridge steers semantic query choice. |
+| **`PayloadBody` (`<sql>` Rust AST)** | `PayloadPen` | `CartridgeBank::ModePayload(Probe \| Read \| Write)` | [`rust_ast_lens.rs`](../crates/portia-nursery/src/rust_ast_lens/mod.rs) (`span_grammar_cartridge_spec` + `tree-sitter-rust` / `syn` typed-hole boundary) | Scopes inspection and `todo!("...")` hole splicing to AST-valid Rust expressions up to `</sql>` while the weight cartridge steers implementation choices. |
+| **`PayloadBody` (`<to_user>`)** | `PayloadPen` | `CartridgeBank::ModePayload(Ask \| Result \| Abstain)` | `Unconstrained` (free prose) *or* `JsonSchema` (structured GUI / JSON reports) | Free-form natural language questions/summaries (`Unconstrained`) or schema-checked structured payloads (`JsonSchema`), detaching to `CartridgeBank::Base` the instant `</to_user>` closes. |
+
+---
+
+## 3. Five Architectural Mechanisms Inside `Qwen3.5` (`0.8B` & `4B`)
+
+Under the hood, `Qwen3.5-0.8B-Base` (`24` layers: `18` `GatedDeltaNet` recurrent layers + `6` standard `GQA` softmax attention layers, hidden size `1,024`) and `Qwen3.5-4B-Base` (`32` layers: `24` `GatedDeltaNet` + `8` `GQA`, hidden size `2,560`) have specific hardware-like structures that `Portia` programs directly. See **[`docs/ARCHITECTURE_AND_EXPLOITS.md`](ARCHITECTURE_AND_EXPLOITS.md)** for the full linear algebra derivations.
+
+| # | Mechanism | Where It Lives in `Qwen3.5-0.8B` / `4B` | Rust Modules | What Passed in Live Tests (`0` Runtime Hooks) |
+| :- | :--- | :--- | :--- | :--- |
+| **1** | **Reverse-Biased `SwiGLU` Neuron Diodes, Ternary Forks, & Length-Preserving Vector Rotation** | Layer 22 / 30 `mlp` (`2`-slot coupled `SO(d)` pairs) | [`ir/mod.rs`](../crates/portia-compiler/src/ir/mod.rs), [`numerics/sod.rs`](../crates/portia-compiler/src/numerics/sod.rs), [`solvers/conic_qp.rs`](../crates/portia-compiler/src/solvers/conic_qp.rs), [`solvers/clarabel_ternary.rs`](../crates/portia-compiler/src/solvers/clarabel_ternary.rs), [`numerics/subspace.rs`](../crates/portia-compiler/src/numerics/subspace.rs) | **`430 / 430` (`100%`)** SQL/multilingual routing test cases passing on both `0.8B` and `4B` plus **`60 / 60` (`100%`)** convex-midpoint 3-state ternary forks (`+1 / 0 / -1`) in `2` slots. Rotates the layer's activation vector on $\operatorname{SO}(d)$ without changing its length, avoiding the next layer's normalization limiter. |
+| **2** | **Submerged Address-Bus Pointer Routing & 4-Color `ASID` Tagging (`75%` Un-Rotated RoPE Dimensions)** | Layer 14 & 18 (`0.8B`) / Layer 22 (`4B`) steering downstream GQA `q_proj` / `k_proj` (`[64..256)` + output gate inside $\ker(\mathbf{W}_V)$) | [`discovery/gqa_bus.rs`](../crates/portia-compiler/src/discovery/gqa_bus.rs), [`phase_mmu.rs`](../crates/portia-compiler/src/phase_mmu.rs), [`v2_pointer_bridge.rs`](../crates/portia-sql/src/v2_pointer_bridge.rs) | `75%` of each attention head (`[64..256)`) is **not rotated by RoPE** and `75%` of wires sit in $\ker(\mathbf{W}_V)$. Tagging `<schema>` vs. `<think>` via `ASID` codebooks lifts live `0.8B-Base` gibberish-schema `SUM` execution from **`0 / 40` (`0.0%`) $\to$ `39 / 40` (`97.5%`)** (`4.7e-7` value-bus bleed). |
+| **3** | **Prompt-Blind Causal Grammar Cartridge (`llguidance` + [`grammars/upstream/sqlite.lark`](../grammars/upstream/sqlite.lark) & `PRAGMA table_info`)** | [`GrammarCartridgeSpec::LarkGrammar`](../crates/portia-core/src/relay/mod.rs) + [`EpistemicSqlGrammarCartridge`](../crates/portia-sql/src/grammar_trie/mod.rs) | [`grammar_trie.rs`](../crates/portia-sql/src/grammar_trie/mod.rs), [`relational_ast.rs`](../crates/portia-sql/src/relational_ast/mod.rs), [`domain.rs`](../crates/portia-core/src/domain/mod.rs), [`grammars/upstream/sqlite.lark`](../grammars/upstream/sqlite.lark) | By type signature, the grammar cartridge **does not receive the user prompt as an argument**: it gates legal modes from causal probe state and enforces stratified SQLite `.lark` syntax (`JOIN`, `LEFT JOIN`, `COUNT(*)`, `>=`, `UPDATE`), probed `PRAGMA table_info` columns, and `sqlparser` AST safety while all semantic choice comes from the weights. |
+| **4** | **Natural BPE Mode Tokens & Contextual Secant Anti-Echo Nullspace Projection** | Untouched Qwen3.5 BPE mode tokens (`" PRO"`=`5140`, `" READ"`=`18104`, `" AS"`=`5574`, `" WRITE"`=`37272`, `" RESULT"`=`27604`, `" AB"`=`13732`) + Layer `L_total - 1` suppressor nullspace | [`discovery/mod.rs`](../crates/portia-compiler/src/discovery/mod.rs), [`wire.rs`](../crates/portia-compiler/src/wire.rs), [`portia-core/src/lib.rs`](../crates/portia-core/src/lib.rs) | Leaves `embed_tokens` and `lm_head` 100% untouched: pairs `llguidance` `LiteralSet` mode constraints with natural unembedding contrast vectors projected orthogonal to contextual secant suppressor neurons (`DownstreamSwigluBlock`) so Layer `L_total - 1` never inverts the mode impulse. |
+| **5** | **`Gated DeltaNet` Head-Partitioned Recurrent Memory Scrubbing** | Layer 20 driving Layer 21 `Qwen3_5GatedDeltaNet` decay (`in_proj_a`) with `0.000` `in_proj_b` cross-talk | [`solvers/deltanet_scrub.rs`](../crates/portia-compiler/src/solvers/deltanet_scrub.rs) | When a conversation switches tables or rolls back a speculative step, a 1-slot diode pulses `in_proj_a` (`DecayFlush` on target heads, `RetentionLock` on preserved heads, `0.000` `in_proj_b` write bleed) to clear stale recurrent fast-weight memory in 1 token. |
+
+---
+
+## 4. Why Weight Surgery Gets Easier on Larger Models (`0.8B -> 4B`)
+
+As the model's hidden vector size grows from `1,024` (`0.8B`) to `2,560` (`4B`), the number of directions we need to avoid disturbing stays fixed (`~430` dimensions), so the **safe, collision-free room to wire new circuits grows `3.36×` (`594 -> 1,994` free dimensions)**:
+
+| What We Measured | `Qwen/Qwen3.5-0.8B-Base` (`24` layers, width `1,024`) | `Qwen/Qwen3.5-4B-Base` (`32` layers, width `2,560`) | What Changes from `0.8B -> 4B` |
+| :--- | :--- | :--- | :--- |
+| **Safe Collision-Free Vector Space** | **`594` free dimensions** (out of `1,024`) | **`1,994` free dimensions** (out of `2,560`) | **`3.36×` more room to wire circuits without side effects** |
+| **SQL Routing (`192` calibration + `96` unseen test cases)** | **`288 / 288` (`100%`)** passing · worst-case margin `+0.91` | **`288 / 288` (`100%`)** passing · worst-case margin `+1.92` | **`100%` passing · `2.11×` cleaner worst-case margin** |
+| **Multilingual & Casual Chat (`78` turns across `en,es,zh,ja,ar,tr`)** | **`78 / 78` (`100%`)** passing · worst-case margin `+34.06` | **`78 / 78` (`100%`)** passing · worst-case margin `+82.66` | **`100%` passing · `2.43×` cleaner worst-case margin** |
+| **Zero-Shot Unseen Languages (`64` turns across `ru,hi,ko,fi,sw,id`)** | **`64 / 64` (`100%`)** passing · **worst-case margin `+2.11`** | **`64 / 64` (`100%`)** passing · **worst-case margin `+45.37`** | **`100%` (`430/430` total) · `21.5×` jump in worst-case margin** |
+
+---
+
+## 5. Appendix: Compile Timing, Cartridge Size, & Compute Spend
+
+- **CPU Compile Latency:** **`0.73 ms`** per slot pair on a laptop CPU via `faer` thin SVD + [`Clarabel`](https://github.com/oxfordcontrol/Clarabel.rs) interior-point SOCP (`0` gradient steps).
+- **Cartridge Footprint:** **`0.885 MB`** for a 128-slot dynamic bank (`2–32` active `SwiGLU` neuron slots per mode).
+- **Total Project GPU Spend:** **`~$100`** renting consumer GPUs on RunPod (`~$40` of which was spent on early unbatched passes before adding `logits_to_keep=1` and moving the solver to Rust). Once amortized, capturing the boundary activations for a full cartridge suite costs **under `$1` of GPU prefill**.

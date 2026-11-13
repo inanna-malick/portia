@@ -1,0 +1,21 @@
+[package]
+name = "portia-sql"
+version.workspace = true
+edition.workspace = true
+license-file.workspace = true
+
+[dependencies]
+portia-core = { path = "../portia-core" }
+portia-compiler = { path = "../portia-compiler" }
+portia-nursery = { path = "../portia-nursery" }
+anyhow.workspace = true
+thiserror.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+rusqlite.workspace = true
+sqlparser.workspace = true
+proptest.workspace = true
+recursion.workspace = true
+
+[dev-dependencies]
+lark-bpe-proptest = { path = "../lark-bpe-proptest" }

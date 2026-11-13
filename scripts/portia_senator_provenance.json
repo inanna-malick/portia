@@ -1,0 +1,1093 @@
+{
+  "schema_version": "senator_witness_audit_v1",
+  "audit_status": "verified",
+  "audited_at": "2026-11-11",
+  "policy": "Preserve existential state/school prompts whenever a verified former or current U.S. senator graduated there. Every selected witness has a sourced degree and year. A degree supported by combined institutional and individual primary records is explicitly marked as an inference. Original witness strings remain historical inputs, not endorsed evidence.",
+  "entries": [
+    {
+      "case_id": "senator_01",
+      "state": "Illinois",
+      "state_code": "IL",
+      "school": "Harvard University",
+      "original_witness": "Barack Obama",
+      "prompt": "Was there ever a US senator that represented Illinois and whose alma mater was Harvard University?",
+      "prompt_preserved": true,
+      "gold": true,
+      "audit_status": "verified",
+      "accepted_witnesses": [
+        {
+          "name": "Barack Obama",
+          "degree": "J.D.",
+          "graduation_year": 1991,
+          "education_source_url": "https://www.govinfo.gov/content/pkg/CDIR-2014-02-18/pdf/CDIR-2014-02-18-STATISTICALINFORMATION-7.pdf",
+          "education_evidence": "Harvard University J.D., 1991.",
+          "directory_name": "Barack Obama (D)",
+          "bioguide_url": "https://bioguide.congress.gov/search/bio/O000167",
+          "term_begin": "Jan. 3, 2005",
+          "term_end": "Nov. 16, 2008",
+          "additional_education_sources": [
+            {
+              "url": "https://www.obamalibrary.gov/timeline",
+              "evidence": "Harvard Law School enrollment 1988–1991 and graduation with a law degree."
+            }
+          ],
+          "degree_evidence_method": "individual_primary_record",
+          "degree_year": 1991
+        }
+      ],
+      "witness_changed": false,
+      "service_source": {
+        "url": "https://www.senate.gov/states/IL/senators.htm",
+        "bytes": 38774,
+        "sha256": "2ae0f5c4d42d94a4bc7235ff15e7006c07b363cef1988443be95628d064aaa20"
+      },
+      "degree_year_audit_status": "verified"
+    },
+    {
+      "case_id": "senator_02",
+      "state": "Delaware",
+      "state_code": "DE",
+      "school": "Syracuse University",
+      "original_witness": "Joe Biden",
+      "prompt": "Was there ever a US senator that represented Delaware and whose alma mater was Syracuse University?",
+      "prompt_preserved": true,
+      "gold": true,
+      "audit_status": "verified",
+      "accepted_witnesses": [
+        {
+          "name": "Joe Biden",
+          "degree": "J.D.",
+          "graduation_year": 1968,
+          "education_source_url": "https://law.syracuse.edu/alumni-and-giving/alumni-leadership",
+          "education_evidence": "Syracuse College of Law identifies Joseph R. Biden Jr. as a 1968 juris doctor graduate; this is distinct from his later honorary doctorate.",
+          "directory_name": "Joseph R. Biden, Jr. (D)",
+          "bioguide_url": "https://bioguide.congress.gov/search/bio/B000444",
+          "term_begin": "Jan. 3, 1973",
+          "term_end": "Jan. 15, 2009",
+          "degree_evidence_method": "individual_primary_record",
+          "degree_year": 1968,
+          "additional_education_sources": [
+            {
+              "url": "https://www.archives.gov/presidential-records/vice-presidential-records/selected-vice-presidential-records/biden-records",
+              "evidence": "Syracuse law degree in 1968; Delaware Senate service from 1973 to 2009."
+            }
+          ]
+        }
+      ],
+      "witness_changed": false,
+      "service_source": {
+        "url": "https://www.senate.gov/states/DE/senators.htm",
+        "bytes": 40088,
+        "sha256": "9597be420d7aed871a03f8c6c6592ca7dc4b38d96727b3477dcd0b754788766c"
+      },
+      "degree_year_audit_status": "verified"
+    },
+    {
+      "case_id": "senator_03",
+      "state": "Texas",
+      "state_code": "TX",
+      "school": "Princeton University",
+      "original_witness": "Ted Cruz",
+      "prompt": "Was there ever a US senator that represented Texas and whose alma mater was Princeton University?",
+      "prompt_preserved": true,
+      "gold": true,
+      "audit_status": "verified",
+      "accepted_witnesses": [
+        {
+          "name": "Ted Cruz",
+          "degree": "B.A.",
+          "graduation_year": 1992,
+          "education_source_url": "https://www.cruz.senate.gov/newsroom/press-kit",
+          "education_evidence": "Princeton B.A. in 1992; Texas senator.",
+          "directory_name": "Ted Cruz (R)",
+          "bioguide_url": "https://bioguide.congress.gov/search/bio/C001098",
+          "term_begin": "Jan. 3, 2013",
+          "term_end": "Present",
+          "degree_evidence_method": "individual_primary_record",
+          "degree_year": 1992
+        }
+      ],
+      "witness_changed": false,
+      "service_source": {
+        "url": "https://www.senate.gov/states/TX/senators.htm",
+        "bytes": 30907,
+        "sha256": "b63aeb03467bbadb3274b100dfda5d474e16845cd217008a34293d5644938b3c"
+      },
+      "degree_year_audit_status": "verified"
+    },
+    {
+      "case_id": "senator_04",
+      "state": "Massachusetts",
+      "state_code": "MA",
+      "school": "Rutgers University",
+      "original_witness": "Elizabeth Warren",
+      "prompt": "Was there ever a US senator that represented Massachusetts and whose alma mater was Rutgers University?",
+      "prompt_preserved": true,
+      "gold": true,
+      "audit_status": "verified",
+      "accepted_witnesses": [
+        {
+          "name": "Elizabeth Warren",
+          "degree": "J.D.",
+          "graduation_year": 1976,
+          "education_source_url": "https://www.govinfo.gov/content/pkg/CDIR-2022-10-26/html/CDIR-2022-10-26-MA-S-1.htm",
+          "education_evidence": "Rutgers Law School J.D. in 1976; Massachusetts senator.",
+          "directory_name": "Elizabeth Warren (D)",
+          "bioguide_url": "https://bioguide.congress.gov/search/bio/W000817",
+          "term_begin": "Jan. 3, 2013",
+          "term_end": "Present",
+          "degree_evidence_method": "individual_primary_record",
+          "degree_year": 1976
+        }
+      ],
+      "witness_changed": false,
+      "service_source": {
+        "url": "https://www.senate.gov/states/MA/senators.htm",
+        "bytes": 38631,
+        "sha256": "3e37060772fc454a9848c49fd58338cc17ea7f0cd3f74ef22a21a264a0e68e67"
+      },
+      "degree_year_audit_status": "verified"
+    },
+    {
+      "case_id": "senator_05",
+      "state": "Vermont",
+      "state_code": "VT",
+      "school": "the University of Chicago",
+      "original_witness": "Bernie Sanders",
+      "prompt": "Was there ever a US senator that represented Vermont and whose alma mater was the University of Chicago?",
+      "prompt_preserved": true,
+      "gold": true,
+      "audit_status": "verified",
+      "accepted_witnesses": [
+        {
+          "name": "Bernie Sanders",
+          "degree": "B.A.",
+          "graduation_year": 1964,
+          "education_source_url": "https://www.sanders.senate.gov/about-bernie/",
+          "education_evidence": "University of Chicago B.A. in 1964.",
+          "directory_name": "Bernard Sanders (I)",
+          "bioguide_url": "https://bioguide.congress.gov/search/bio/S000033",
+          "term_begin": "Jan. 3, 2007",
+          "term_end": "Present",
+          "degree_evidence_method": "individual_primary_record",
+          "degree_year": 1964
+        }
+      ],
+      "witness_changed": false,
+      "service_source": {
+        "url": "https://www.senate.gov/states/VT/senators.htm",
+        "bytes": 34554,
+        "sha256": "164456d04ca780ed33ec614a865acb13d310a5c3ce4882e69fadcc354337afdc"
+      },
+      "degree_year_audit_status": "verified"
+    },
+    {
+      "case_id": "senator_06",
+      "state": "Utah",
+      "state_code": "UT",
+      "school": "Brigham Young University",
+      "original_witness": "Mitt Romney",
+      "prompt": "Was there ever a US senator that represented Utah and whose alma mater was Brigham Young University?",
+      "prompt_preserved": true,
+      "gold": true,
+      "audit_status": "verified",
+      "accepted_witnesses": [
+        {
+          "name": "Mitt Romney",
+          "degree": "B.A.",
+          "graduation_year": 1971,
+          "education_source_url": "https://marriott.byu.edu/stories/feature/sloc-president-to-speak-at-byu-marriott-school-convocation",
+          "education_evidence": "Brigham Young University bachelor of arts degree in 1971.",
+          "directory_name": "Mitt Romney (R)",
+          "bioguide_url": "https://bioguide.congress.gov/search/bio/R000615",
+          "term_begin": "Jan. 3, 2019",
+          "term_end": "Jan. 3, 2025",
+          "degree_evidence_method": "individual_primary_record",
+          "degree_year": 1971
+        }
+      ],
+      "witness_changed": false,
+      "service_source": {
+        "url": "https://www.senate.gov/states/UT/senators.htm",
+        "bytes": 24541,
+        "sha256": "14cbfad6a0d4c539d1f8f7080cf8af6efa05caffef38758a2a6f8cac45a509cf"
+      },
+      "degree_year_audit_status": "verified"
+    },
+    {
+      "case_id": "senator_07",
+      "state": "New Jersey",
+      "state_code": "NJ",
+      "school": "Stanford University",
+      "original_witness": "Cory Booker",
+      "prompt": "Was there ever a US senator that represented New Jersey and whose alma mater was Stanford University?",
+      "prompt_preserved": true,
+      "gold": true,
+      "audit_status": "verified",
+      "accepted_witnesses": [
+        {
+          "name": "Cory Booker",
+          "degree": "B.A.",
+          "graduation_year": 1991,
+          "education_source_url": "https://news.stanford.edu/stories/2012/06/text-president-hennessys-prepared-remarks-commencement-2012",
+          "education_evidence": "Stanford B.A. in 1991, followed by a Stanford M.A. in sociology.",
+          "directory_name": "Cory A. Booker (D)",
+          "bioguide_url": "https://bioguide.congress.gov/search/bio/B001288",
+          "term_begin": "Oct. 31, 2013",
+          "term_end": "Present",
+          "degree_evidence_method": "individual_primary_record",
+          "degree_year": 1991
+        }
+      ],
+      "witness_changed": false,
+      "service_source": {
+        "url": "https://www.senate.gov/states/NJ/senators.htm",
+        "bytes": 46069,
+        "sha256": "f64e7868a51f8016fc78ceca49b107e6a2b8ba7c9103e6504279a0aa5703094e"
+      },
+      "degree_year_audit_status": "verified"
+    },
+    {
+      "case_id": "senator_08",
+      "state": "Minnesota",
+      "state_code": "MN",
+      "school": "Yale University",
+      "original_witness": "Amy Klobuchar",
+      "prompt": "Was there ever a US senator that represented Minnesota and whose alma mater was Yale University?",
+      "prompt_preserved": true,
+      "gold": true,
+      "audit_status": "verified",
+      "accepted_witnesses": [
+        {
+          "name": "Amy Klobuchar",
+          "degree": "B.A.",
+          "graduation_year": 1982,
+          "education_source_url": "https://news.yale.edu/2014/11/05/seventeen-yale-alumni-won-congressional-governors-races-election-day-2014",
+          "education_evidence": "Yale B.A. in 1982; Minnesota senator.",
+          "directory_name": "Amy Klobuchar (D)",
+          "bioguide_url": "https://bioguide.congress.gov/search/bio/K000367",
+          "term_begin": "Jan. 3, 2007",
+          "term_end": "Present",
+          "degree_evidence_method": "individual_primary_record",
+          "degree_year": 1982
+        }
+      ],
+      "witness_changed": false,
+      "service_source": {
+        "url": "https://www.senate.gov/states/MN/senators.htm",
+        "bytes": 33803,
+        "sha256": "04d430fa2171f7aab6aee1e05e9acd5d6eb342898167e94a290f34110773a85f"
+      },
+      "degree_year_audit_status": "verified"
+    },
+    {
+      "case_id": "senator_09",
+      "state": "New York",
+      "state_code": "NY",
+      "school": "Yale Law School",
+      "original_witness": "Hillary Clinton / Chuck Schumer",
+      "prompt": "Was there ever a US senator that represented New York and whose alma mater was Yale Law School?",
+      "prompt_preserved": true,
+      "gold": true,
+      "audit_status": "verified",
+      "accepted_witnesses": [
+        {
+          "name": "Hillary Clinton",
+          "degree": "J.D.",
+          "graduation_year": 1973,
+          "education_source_url": "https://news.yale.edu/2018/02/27/hillary-clinton-73-jd-be-years-class-day-speaker",
+          "education_evidence": "Yale Law School J.D. in 1973; elected senator from New York.",
+          "directory_name": "Hillary R. Clinton (D)",
+          "bioguide_url": "https://bioguide.congress.gov/search/bio/C001041",
+          "term_begin": "Jan. 3, 2001",
+          "term_end": "Jan. 21, 2009",
+          "degree_evidence_method": "individual_primary_record",
+          "degree_year": 1973
+        }
+      ],
+      "witness_changed": false,
+      "service_source": {
+        "url": "https://www.senate.gov/states/NY/senators.htm",
+        "bytes": 41075,
+        "sha256": "befea64a6130545e9f1da54fd1a259fa301d8ef72aa3750185b35f04b67a8d66"
+      },
+      "degree_year_audit_status": "verified"
+    },
+    {
+      "case_id": "senator_10",
+      "state": "Kentucky",
+      "state_code": "KY",
+      "school": "the University of Louisville",
+      "original_witness": "Mitch McConnell",
+      "prompt": "Was there ever a US senator that represented Kentucky and whose alma mater was the University of Louisville?",
+      "prompt_preserved": true,
+      "gold": true,
+      "audit_status": "verified",
+      "accepted_witnesses": [
+        {
+          "name": "Mitch McConnell",
+          "degree": "B.A.",
+          "graduation_year": 1964,
+          "education_source_url": "https://www.govinfo.gov/content/pkg/CDIR-2022-10-26/html/CDIR-2022-10-26-KY-S-1.htm",
+          "education_evidence": "University of Louisville B.A., 1964.",
+          "directory_name": "Mitch McConnell (R)",
+          "bioguide_url": "https://bioguide.congress.gov/search/bio/M000355",
+          "term_begin": "Jan. 3, 1985",
+          "term_end": "Present",
+          "additional_education_sources": [
+            {
+              "url": "https://news.louisville.edu/news/uofl-graduate-named-mcconnells-legal-counsel",
+              "evidence": "University of Louisville graduate, class of 1964; degree type not specified by this source."
+            }
+          ],
+          "degree_evidence_method": "individual_primary_record",
+          "degree_year": 1964
+        }
+      ],
+      "witness_changed": false,
+      "service_source": {
+        "url": "https://www.senate.gov/states/KY/senators.htm",
+        "bytes": 46926,
+        "sha256": "393a90e8a98348c8829d2d940b78803deb8897d8e064056d5938c8c3bacc201d"
+      },
+      "degree_year_audit_status": "verified"
+    },
+    {
+      "case_id": "senator_11",
+      "state": "California",
+      "state_code": "CA",
+      "school": "Stanford University",
+      "original_witness": "Dianne Feinstein",
+      "prompt": "Was there ever a US senator that represented California and whose alma mater was Stanford University?",
+      "prompt_preserved": true,
+      "gold": true,
+      "audit_status": "verified",
+      "accepted_witnesses": [
+        {
+          "name": "Dianne Feinstein",
+          "degree": "B.A. in History",
+          "graduation_year": 1955,
+          "education_source_url": "https://library.stanford.edu/news/late-nights-senator-dianne-feinstein",
+          "education_evidence": "Stanford B.A. in History in 1955; California Senate service 1992–2023.",
+          "directory_name": "Dianne Feinstein (D)",
+          "bioguide_url": "https://bioguide.congress.gov/search/bio/F000062",
+          "term_begin": "Nov. 4, 1992",
+          "term_end": "Sept. 29, 2023",
+          "degree_evidence_method": "individual_primary_record",
+          "degree_year": 1955
+        }
+      ],
+      "witness_changed": false,
+      "service_source": {
+        "url": "https://www.senate.gov/states/CA/senators.htm",
+        "bytes": 36501,
+        "sha256": "b89cb9abbc1701d46eaf515e1a58f8d09c80cdd585ceaf28935ab607ff14b4c7"
+      },
+      "degree_year_audit_status": "verified"
+    },
+    {
+      "case_id": "senator_12",
+      "state": "Florida",
+      "state_code": "FL",
+      "school": "the University of Florida",
+      "original_witness": "Marco Rubio",
+      "prompt": "Was there ever a US senator that represented Florida and whose alma mater was the University of Florida?",
+      "prompt_preserved": true,
+      "gold": true,
+      "audit_status": "verified",
+      "accepted_witnesses": [
+        {
+          "name": "Marco Rubio",
+          "degree": "B.A. in political science",
+          "graduation_year": 1993,
+          "education_source_url": "https://news.ufl.edu/2025/02/rubio-papers/",
+          "education_evidence": "University of Florida B.A. in political science in 1993; senator 2011–2025.",
+          "directory_name": "Marco Rubio (R)",
+          "bioguide_url": "https://bioguide.congress.gov/search/bio/R000595",
+          "term_begin": "Jan. 3, 2011",
+          "term_end": "Jan. 20, 2025",
+          "degree_evidence_method": "individual_primary_record",
+          "degree_year": 1993
+        }
+      ],
+      "witness_changed": false,
+      "service_source": {
+        "url": "https://www.senate.gov/states/FL/senators.htm",
+        "bytes": 33019,
+        "sha256": "dc926af30f37e94a582fd5a7f0b654a919a0677ec9171146223244242474708c"
+      },
+      "degree_year_audit_status": "verified"
+    },
+    {
+      "case_id": "senator_13",
+      "state": "Arizona",
+      "state_code": "AZ",
+      "school": "the United States Naval Academy",
+      "original_witness": "John McCain",
+      "prompt": "Was there ever a US senator that represented Arizona and whose alma mater was the United States Naval Academy?",
+      "prompt_preserved": true,
+      "gold": true,
+      "audit_status": "verified",
+      "accepted_witnesses": [
+        {
+          "name": "John McCain",
+          "degree": "B.S.",
+          "graduation_year": 1958,
+          "education_source_url": "https://www.govinfo.gov/content/pkg/CDIR-2016-02-12/html/CDIR-2016-02-12-AZ-S-1.htm",
+          "education_evidence": "Individual Congressional Directory entry verifies United States Naval Academy graduation in 1958. Degree label is a documented inference from the academy-wide B.S. graduation rule, not a quotation from this individual biography.",
+          "directory_name": "John S. McCain III (R)",
+          "bioguide_url": "https://bioguide.congress.gov/search/bio/M000303",
+          "term_begin": "Jan. 3, 1987",
+          "term_end": "Aug. 25, 2018",
+          "degree_evidence_method": "combined_primary_records_inference",
+          "additional_education_sources": [
+            {
+              "url": "https://www.usna.edu/BlueAndGoldBook/",
+              "evidence": "Academy states its four-year graduates receive bachelor of science degrees and dates statutory authority to award that degree from Class of 1931."
+            },
+            {
+              "url": "https://usna.edu/MNEDept/About_Our_Department/History.php",
+              "evidence": "The academy states the Class of 1933 first had the B.S. degree written in the diploma; fixed common curriculum preceded the later major program."
+            }
+          ],
+          "degree_year": 1958
+        }
+      ],
+      "witness_changed": false,
+      "service_source": {
+        "url": "https://www.senate.gov/states/AZ/senators.htm",
+        "bytes": 23851,
+        "sha256": "44d95f9ce9924e5c317c46fd68d0b1eb0b7c446b3b6c55ab0b26cb62ab427c75"
+      },
+      "degree_year_audit_status": "verified"
+    },
+    {
+      "case_id": "senator_14",
+      "state": "Ohio",
+      "state_code": "OH",
+      "school": "Yale Law School",
+      "original_witness": "JD Vance",
+      "prompt": "Was there ever a US senator that represented Ohio and whose alma mater was Yale Law School?",
+      "prompt_preserved": true,
+      "gold": true,
+      "audit_status": "verified",
+      "accepted_witnesses": [
+        {
+          "name": "JD Vance",
+          "degree": "J.D.",
+          "graduation_year": 2013,
+          "education_source_url": "https://visitorcenter.yale.edu/about-us/exhibits/groundbreakers-game-changers/leaders",
+          "education_evidence": "Yale J.D. in 2013; former senator from Ohio.",
+          "directory_name": "J. D. Vance (R)",
+          "bioguide_url": "https://bioguide.congress.gov/search/bio/V000137",
+          "term_begin": "Jan. 3, 2023",
+          "term_end": "Jan. 10, 2025",
+          "degree_evidence_method": "individual_primary_record",
+          "degree_year": 2013
+        }
+      ],
+      "witness_changed": false,
+      "service_source": {
+        "url": "https://www.senate.gov/states/OH/senators.htm",
+        "bytes": 41832,
+        "sha256": "9e1175dd3efa7083157e8a0f9886a3e31c7dab90082139e8ebe2bd124433d120"
+      },
+      "degree_year_audit_status": "verified"
+    },
+    {
+      "case_id": "senator_15",
+      "state": "Georgia",
+      "state_code": "GA",
+      "school": "Morehouse College",
+      "original_witness": "Raphael Warnock",
+      "prompt": "Was there ever a US senator that represented Georgia and whose alma mater was Morehouse College?",
+      "prompt_preserved": true,
+      "gold": true,
+      "audit_status": "verified",
+      "accepted_witnesses": [
+        {
+          "name": "Raphael Warnock",
+          "degree": "B.A. in psychology",
+          "graduation_year": 1991,
+          "education_source_url": "https://www.govinfo.gov/content/pkg/CDIR-2022-10-26/html/CDIR-2022-10-26-GA-S-2.htm",
+          "education_evidence": "Morehouse College B.A. in psychology, 1991.",
+          "directory_name": "Raphael G. Warnock (D)",
+          "bioguide_url": "https://bioguide.congress.gov/search/bio/W000790",
+          "term_begin": "Jan. 20, 2021",
+          "term_end": "Present",
+          "additional_education_sources": [
+            {
+              "url": "https://www.warnock.senate.gov/newsroom/press-releases/senator-reverend-warnock-statement-ahead-of-president-bidens-commencement-address-at-morehouse-college/",
+              "evidence": "Morehouse College graduate in 1991; Georgia senator; degree type not specified by this source."
+            }
+          ],
+          "degree_evidence_method": "individual_primary_record",
+          "degree_year": 1991
+        }
+      ],
+      "witness_changed": false,
+      "service_source": {
+        "url": "https://www.senate.gov/states/GA/senators.htm",
+        "bytes": 44869,
+        "sha256": "6dc74cb788a6b70ec4182468e19020c6d7e2b0878571a37c5287121c8c770fd1"
+      },
+      "degree_year_audit_status": "verified"
+    },
+    {
+      "case_id": "senator_16",
+      "state": "South Carolina",
+      "state_code": "SC",
+      "school": "the University of South Carolina",
+      "original_witness": "Lindsey Graham",
+      "prompt": "Was there ever a US senator that represented South Carolina and whose alma mater was the University of South Carolina?",
+      "prompt_preserved": true,
+      "gold": true,
+      "audit_status": "verified",
+      "accepted_witnesses": [
+        {
+          "name": "Lindsey Graham",
+          "degree": "B.A.",
+          "graduation_year": 1977,
+          "education_source_url": "https://www.govinfo.gov/content/pkg/CDIR-2022-10-26/html/CDIR-2022-10-26-SC.htm",
+          "education_evidence": "University of South Carolina B.A., 1977, and J.D., 1981; the B.A. is the selected witness degree.",
+          "directory_name": "Lindsey Graham (R)",
+          "bioguide_url": "https://bioguide.congress.gov/search/bio/G000359",
+          "term_begin": "Jan. 3, 2003",
+          "term_end": "Jul. 11, 2026",
+          "additional_education_sources": [
+            {
+              "url": "https://www.lgraham.senate.gov/public/index.cfm/biography",
+              "evidence": "Both undergraduate and law degrees from the University of South Carolina; years not specified by this source."
+            }
+          ],
+          "degree_evidence_method": "individual_primary_record",
+          "degree_year": 1977
+        }
+      ],
+      "witness_changed": false,
+      "service_source": {
+        "url": "https://www.senate.gov/states/SC/senators.htm",
+        "bytes": 41035,
+        "sha256": "50b200ded611ccf86d2fab30e1e5440ca1d69d9f93d1fc54dabf293519a438e2"
+      },
+      "degree_year_audit_status": "verified"
+    },
+    {
+      "case_id": "senator_17",
+      "state": "Maine",
+      "state_code": "ME",
+      "school": "St. Lawrence University",
+      "original_witness": "Susan Collins",
+      "prompt": "Was there ever a US senator that represented Maine and whose alma mater was St. Lawrence University?",
+      "prompt_preserved": true,
+      "gold": true,
+      "audit_status": "verified",
+      "accepted_witnesses": [
+        {
+          "name": "Susan Collins",
+          "degree": "B.A.",
+          "graduation_year": 1975,
+          "education_source_url": "https://www.govinfo.gov/content/pkg/CDIR-2022-10-26/html/CDIR-2022-10-26-ME-S-1.htm",
+          "education_evidence": "St. Lawrence University B.A. in 1975; Maine senator.",
+          "directory_name": "Susan M. Collins (R)",
+          "bioguide_url": "https://bioguide.congress.gov/search/bio/C001035",
+          "term_begin": "Jan. 3, 1997",
+          "term_end": "Present",
+          "degree_evidence_method": "individual_primary_record",
+          "degree_year": 1975
+        }
+      ],
+      "witness_changed": false,
+      "service_source": {
+        "url": "https://www.senate.gov/states/ME/senators.htm",
+        "bytes": 32915,
+        "sha256": "b06905a3487b289e8463bd66c48eaa3565091124ea21db21af54556069d8a6ea"
+      },
+      "degree_year_audit_status": "verified"
+    },
+    {
+      "case_id": "senator_18",
+      "state": "Alaska",
+      "state_code": "AK",
+      "school": "Georgetown University",
+      "original_witness": "Lisa Murkowski",
+      "prompt": "Was there ever a US senator that represented Alaska and whose alma mater was Georgetown University?",
+      "prompt_preserved": true,
+      "gold": true,
+      "audit_status": "verified",
+      "accepted_witnesses": [
+        {
+          "name": "Lisa Murkowski",
+          "degree": "B.A. in economics",
+          "graduation_year": 1980,
+          "education_source_url": "https://www.govinfo.gov/content/pkg/CDIR-2022-10-26/html/CDIR-2022-10-26-AK-S-1.htm",
+          "education_evidence": "Georgetown University B.A. in economics, 1980.",
+          "directory_name": "Lisa Murkowski (R)",
+          "bioguide_url": "https://bioguide.congress.gov/search/bio/M001153",
+          "term_begin": "Dec. 20, 2002",
+          "term_end": "Present",
+          "additional_education_sources": [
+            {
+              "url": "https://www.murkowski.senate.gov/about-lisa",
+              "evidence": "Georgetown economics degree in 1980; Alaska senator."
+            }
+          ],
+          "degree_evidence_method": "individual_primary_record",
+          "degree_year": 1980
+        }
+      ],
+      "witness_changed": false,
+      "service_source": {
+        "url": "https://www.senate.gov/states/AK/senators.htm",
+        "bytes": 21038,
+        "sha256": "cc27d8888658ce40986b3a00426f566530473f923b296ad38c78d16ff3b6bfd5"
+      },
+      "degree_year_audit_status": "verified"
+    },
+    {
+      "case_id": "senator_19",
+      "state": "Virginia",
+      "state_code": "VA",
+      "school": "Harvard Law School",
+      "original_witness": "Tim Kaine",
+      "prompt": "Was there ever a US senator that represented Virginia and whose alma mater was Harvard Law School?",
+      "prompt_preserved": true,
+      "gold": true,
+      "audit_status": "verified",
+      "accepted_witnesses": [
+        {
+          "name": "Tim Kaine",
+          "degree": "J.D.",
+          "graduation_year": 1983,
+          "education_source_url": "https://news.harvard.edu/gazette/story/2017/10/at-harvard-law-school-5-u-s-senators-see-hope-for-politics/",
+          "education_evidence": "Harvard Law School J.D. in 1983; Virginia senator.",
+          "directory_name": "Tim Kaine (D)",
+          "bioguide_url": "https://bioguide.congress.gov/search/bio/K000384",
+          "term_begin": "Jan. 3, 2013",
+          "term_end": "Present",
+          "degree_evidence_method": "individual_primary_record",
+          "degree_year": 1983
+        }
+      ],
+      "witness_changed": false,
+      "service_source": {
+        "url": "https://www.senate.gov/states/VA/senators.htm",
+        "bytes": 39435,
+        "sha256": "e8d5824bebe0b6e9a34a841620dc8f8fc031871c8a14063e4c7aa52577f420d3"
+      },
+      "degree_year_audit_status": "verified"
+    },
+    {
+      "case_id": "senator_20",
+      "state": "Washington",
+      "state_code": "WA",
+      "school": "Washington State University",
+      "original_witness": "Patty Murray",
+      "prompt": "Was there ever a US senator that represented Washington and whose alma mater was Washington State University?",
+      "prompt_preserved": true,
+      "gold": true,
+      "audit_status": "verified",
+      "accepted_witnesses": [
+        {
+          "name": "Patty Murray",
+          "degree": "B.A.",
+          "graduation_year": 1972,
+          "education_source_url": "https://www.govinfo.gov/content/pkg/CDIR-2022-10-26/html/CDIR-2022-10-26-WA-S-1.htm",
+          "education_evidence": "Washington State University B.A., 1972.",
+          "directory_name": "Patty Murray (D)",
+          "bioguide_url": "https://bioguide.congress.gov/search/bio/M001111",
+          "term_begin": "Jan. 3, 1993",
+          "term_end": "Present",
+          "additional_education_sources": [
+            {
+              "url": "https://timeline.wsu.edu/timeline/coug-in-the-senate/",
+              "evidence": "Washington State University graduate, class of 1972; senator from Washington; degree type not specified."
+            }
+          ],
+          "degree_evidence_method": "individual_primary_record",
+          "degree_year": 1972
+        }
+      ],
+      "witness_changed": false,
+      "service_source": {
+        "url": "https://www.senate.gov/states/WA/senators.htm",
+        "bytes": 26418,
+        "sha256": "169ef03bc6e799c80966c5512c6e9dbb37117aa99e2256f3ad2edecb4fe42239"
+      },
+      "degree_year_audit_status": "verified"
+    },
+    {
+      "case_id": "senator_21",
+      "state": "Oregon",
+      "state_code": "OR",
+      "school": "Stanford University",
+      "original_witness": "Ron Wyden",
+      "prompt": "Was there ever a US senator that represented Oregon and whose alma mater was Stanford University?",
+      "prompt_preserved": true,
+      "gold": true,
+      "audit_status": "verified",
+      "accepted_witnesses": [
+        {
+          "name": "Ron Wyden",
+          "degree": "B.A. in political science",
+          "graduation_year": 1971,
+          "education_source_url": "https://www.govinfo.gov/content/pkg/CDIR-2022-10-26/html/CDIR-2022-10-26-OR-S-1.htm",
+          "education_evidence": "Stanford B.A. in political science in 1971; Oregon senator.",
+          "directory_name": "Ron Wyden (D)",
+          "bioguide_url": "https://bioguide.congress.gov/search/bio/W000779",
+          "term_begin": "Feb. 6, 1996",
+          "term_end": "Present",
+          "degree_evidence_method": "individual_primary_record",
+          "degree_year": 1971
+        }
+      ],
+      "witness_changed": false,
+      "service_source": {
+        "url": "https://www.senate.gov/states/OR/senators.htm",
+        "bytes": 33113,
+        "sha256": "6d2d18a835020130cd95879751efde972a84cebd7cb936dbd129b18d715b95af"
+      },
+      "degree_year_audit_status": "verified"
+    },
+    {
+      "case_id": "senator_22",
+      "state": "Colorado",
+      "state_code": "CO",
+      "school": "Colorado College",
+      "original_witness": "Michael Bennet",
+      "prompt": "Was there ever a US senator that represented Colorado and whose alma mater was Colorado College?",
+      "prompt_preserved": true,
+      "gold": true,
+      "audit_status": "verified",
+      "accepted_witnesses": [
+        {
+          "name": "Ken Salazar",
+          "degree": "B.A. in political science",
+          "graduation_year": 1977,
+          "education_source_url": "https://www.coloradocollege.edu/other/commencement/resources/2007/CommencementProgram2007.pdf",
+          "education_evidence": "Colorado College B.A. in political science in 1977; distinct from his later honorary degree.",
+          "directory_name": "Kenneth L. Salazar (Ken) (D)",
+          "bioguide_url": "https://bioguide.congress.gov/search/bio/S001163",
+          "term_begin": "Jan. 3, 2005",
+          "term_end": "Jan. 20, 2009",
+          "degree_evidence_method": "individual_primary_record",
+          "degree_year": 1977
+        }
+      ],
+      "witness_changed": true,
+      "service_source": {
+        "url": "https://www.senate.gov/states/CO/senators.htm",
+        "bytes": 31366,
+        "sha256": "46b749722e21e1b2d14f07a2a82c6ca31a913a53581e3c1806b7488622e66be6"
+      },
+      "degree_year_audit_status": "verified"
+    },
+    {
+      "case_id": "senator_23",
+      "state": "Connecticut",
+      "state_code": "CT",
+      "school": "Yale Law School",
+      "original_witness": "Richard Blumenthal",
+      "prompt": "Was there ever a US senator that represented Connecticut and whose alma mater was Yale Law School?",
+      "prompt_preserved": true,
+      "gold": true,
+      "audit_status": "verified",
+      "accepted_witnesses": [
+        {
+          "name": "Richard Blumenthal",
+          "degree": "J.D.",
+          "graduation_year": 1973,
+          "education_source_url": "https://www.govinfo.gov/content/pkg/CDIR-2022-10-26/html/CDIR-2022-10-26-CT-S-1.htm",
+          "education_evidence": "Yale Law School J.D. in 1973; Connecticut senator.",
+          "directory_name": "Richard Blumenthal (D)",
+          "bioguide_url": "https://bioguide.congress.gov/search/bio/B001277",
+          "term_begin": "Jan. 3, 2011",
+          "term_end": "Present",
+          "degree_evidence_method": "individual_primary_record",
+          "degree_year": 1973
+        }
+      ],
+      "witness_changed": false,
+      "service_source": {
+        "url": "https://www.senate.gov/states/CT/senators.htm",
+        "bytes": 38485,
+        "sha256": "4629657c33d724238b3defb752102ddee1a5a774cac5c1637f8ed303d126fc5a"
+      },
+      "degree_year_audit_status": "verified"
+    },
+    {
+      "case_id": "senator_24",
+      "state": "Rhode Island",
+      "state_code": "RI",
+      "school": "the University of Virginia",
+      "original_witness": "Sheldon Whitehouse",
+      "prompt": "Was there ever a US senator that represented Rhode Island and whose alma mater was the University of Virginia?",
+      "prompt_preserved": true,
+      "gold": true,
+      "audit_status": "verified",
+      "accepted_witnesses": [
+        {
+          "name": "Sheldon Whitehouse",
+          "degree": "J.D.",
+          "graduation_year": 1982,
+          "education_source_url": "https://www.govinfo.gov/content/pkg/CDIR-2022-10-26/html/CDIR-2022-10-26-RI-S-2.htm",
+          "education_evidence": "University of Virginia School of Law J.D., 1982.",
+          "directory_name": "Sheldon Whitehouse (D)",
+          "bioguide_url": "https://bioguide.congress.gov/search/bio/W000802",
+          "term_begin": "Jan. 3, 2007",
+          "term_end": "Present",
+          "additional_education_sources": [
+            {
+              "url": "https://www.law.virginia.edu/news/201310/us-sen-sheldon-whitehouse-82-speak-uva-law-judicial-nomination-process",
+              "evidence": "University of Virginia School of Law graduate in 1982; Rhode Island senator."
+            }
+          ],
+          "degree_evidence_method": "individual_primary_record",
+          "degree_year": 1982
+        }
+      ],
+      "witness_changed": false,
+      "service_source": {
+        "url": "https://www.senate.gov/states/RI/senators.htm",
+        "bytes": 36104,
+        "sha256": "d118026f06b6cf9939537f97bbf8b2e662a23a9d541e166d0f31ade52fc623b0"
+      },
+      "degree_year_audit_status": "verified"
+    },
+    {
+      "case_id": "senator_25",
+      "state": "Wisconsin",
+      "state_code": "WI",
+      "school": "Smith College",
+      "original_witness": "Tammy Baldwin",
+      "prompt": "Was there ever a US senator that represented Wisconsin and whose alma mater was Smith College?",
+      "prompt_preserved": true,
+      "gold": true,
+      "audit_status": "verified",
+      "accepted_witnesses": [
+        {
+          "name": "Tammy Baldwin",
+          "degree": "A.B.",
+          "graduation_year": 1984,
+          "education_source_url": "https://www.govinfo.gov/content/pkg/CDIR-2022-10-26/html/CDIR-2022-10-26-WI-S-2.htm",
+          "education_evidence": "Smith College A.B., 1984.",
+          "directory_name": "Tammy Baldwin (D)",
+          "bioguide_url": "https://bioguide.congress.gov/search/bio/B001230",
+          "term_begin": "Jan. 3, 2013",
+          "term_end": "Present",
+          "additional_education_sources": [
+            {
+              "url": "https://www.smith.edu/discover-smith/history-traditions/notable-alums",
+              "evidence": "Smith alumna, class of 1984; senator from Wisconsin; degree type not specified."
+            }
+          ],
+          "degree_evidence_method": "individual_primary_record",
+          "degree_year": 1984
+        }
+      ],
+      "witness_changed": false,
+      "service_source": {
+        "url": "https://www.senate.gov/states/WI/senators.htm",
+        "bytes": 29102,
+        "sha256": "80352b483c94fcc2c40593bc0566377f4844e127ae8ace7ef906a08d9d0a5e0e"
+      },
+      "degree_year_audit_status": "verified"
+    },
+    {
+      "case_id": "senator_26",
+      "state": "Indiana",
+      "state_code": "IN",
+      "school": "Wabash College",
+      "original_witness": "Mike Braun",
+      "prompt": "Was there ever a US senator that represented Indiana and whose alma mater was Wabash College?",
+      "prompt_preserved": true,
+      "gold": true,
+      "audit_status": "verified",
+      "accepted_witnesses": [
+        {
+          "name": "Mike Braun",
+          "degree": "B.A. in economics",
+          "graduation_year": 1976,
+          "education_source_url": "https://www.govinfo.gov/content/pkg/CDIR-2022-10-26/html/CDIR-2022-10-26-IN-S-2.htm",
+          "education_evidence": "Wabash College B.A. in economics, 1976.",
+          "directory_name": "Michael Braun (R)",
+          "bioguide_url": "https://bioguide.congress.gov/search/bio/B001310",
+          "term_begin": "Jan. 3, 2019",
+          "term_end": "Jan. 3, 2025",
+          "additional_education_sources": [
+            {
+              "url": "https://www.wabash.edu/news/story/11240",
+              "evidence": "Wabash graduate in 1976 with economics major; elected to the Senate in 2018."
+            }
+          ],
+          "degree_evidence_method": "individual_primary_record",
+          "degree_year": 1976
+        }
+      ],
+      "witness_changed": false,
+      "service_source": {
+        "url": "https://www.senate.gov/states/IN/senators.htm",
+        "bytes": 35643,
+        "sha256": "212eeced759bff34907c7fb71d9cbb0eaca87966ee3173d5bd15aea0838b87d4"
+      },
+      "degree_year_audit_status": "verified"
+    },
+    {
+      "case_id": "senator_27",
+      "state": "Missouri",
+      "state_code": "MO",
+      "school": "Stanford University",
+      "original_witness": "Josh Hawley",
+      "prompt": "Was there ever a US senator that represented Missouri and whose alma mater was Stanford University?",
+      "prompt_preserved": true,
+      "gold": true,
+      "audit_status": "verified",
+      "accepted_witnesses": [
+        {
+          "name": "Josh Hawley",
+          "degree": "B.A. in history",
+          "graduation_year": 2002,
+          "education_source_url": "https://www.govinfo.gov/content/pkg/CDIR-2022-10-26/html/CDIR-2022-10-26-MO-S-2.htm",
+          "education_evidence": "Stanford University B.A. in history, 2002.",
+          "directory_name": "Josh Hawley (R)",
+          "bioguide_url": "https://bioguide.congress.gov/search/bio/H001089",
+          "term_begin": "Jan. 3, 2019",
+          "term_end": "Present",
+          "additional_education_sources": [
+            {
+              "url": "https://www.hawley.senate.gov/about/",
+              "evidence": "Stanford graduate in 2002; Missouri senator; degree type not specified."
+            }
+          ],
+          "degree_evidence_method": "individual_primary_record",
+          "degree_year": 2002
+        }
+      ],
+      "witness_changed": false,
+      "service_source": {
+        "url": "https://www.senate.gov/states/MO/senators.htm",
+        "bytes": 35462,
+        "sha256": "a6b97199522e8dedbec4e72d77960cd0b491728c8b6da204cf4bb3cdbb20e9d8"
+      },
+      "degree_year_audit_status": "verified"
+    },
+    {
+      "case_id": "senator_28",
+      "state": "Arkansas",
+      "state_code": "AR",
+      "school": "Harvard University",
+      "original_witness": "Tom Cotton",
+      "prompt": "Was there ever a US senator that represented Arkansas and whose alma mater was Harvard University?",
+      "prompt_preserved": true,
+      "gold": true,
+      "audit_status": "verified",
+      "accepted_witnesses": [
+        {
+          "name": "Tom Cotton",
+          "degree": "J.D.",
+          "graduation_year": 2002,
+          "education_source_url": "https://news.harvard.edu/gazette/story/2017/10/at-harvard-law-school-5-u-s-senators-see-hope-for-politics/",
+          "education_evidence": "Harvard Law School J.D. in 2002; Arkansas senator.",
+          "directory_name": "Tom Cotton (R)",
+          "bioguide_url": "https://bioguide.congress.gov/search/bio/C001095",
+          "term_begin": "Jan. 3, 2015",
+          "term_end": "Present",
+          "degree_evidence_method": "individual_primary_record",
+          "degree_year": 2002
+        }
+      ],
+      "witness_changed": false,
+      "service_source": {
+        "url": "https://www.senate.gov/states/AR/senators.htm",
+        "bytes": 31048,
+        "sha256": "dc27393edea78570a6430139399a49815666e7bdf8185c3569bca34f15860ec4"
+      },
+      "degree_year_audit_status": "verified"
+    },
+    {
+      "case_id": "senator_29",
+      "state": "Tennessee",
+      "state_code": "TN",
+      "school": "Vanderbilt University",
+      "original_witness": "Lamar Alexander / Bill Hagerty",
+      "prompt": "Was there ever a US senator that represented Tennessee and whose alma mater was Vanderbilt University?",
+      "prompt_preserved": true,
+      "gold": true,
+      "audit_status": "verified",
+      "accepted_witnesses": [
+        {
+          "name": "Lamar Alexander",
+          "degree": "B.A.",
+          "graduation_year": 1962,
+          "education_source_url": "https://news.vanderbilt.edu/2026/05/14/engage-with-a-statesman-vanderbilt-welcomes-alumnus-lamar-alexander-at-coming-events-podcast/",
+          "education_evidence": "Vanderbilt B.A. in 1962; former Tennessee senator.",
+          "directory_name": "Lamar Alexander (R)",
+          "bioguide_url": "https://bioguide.congress.gov/search/bio/A000360",
+          "term_begin": "Jan. 3, 2003",
+          "term_end": "Jan. 3, 2021",
+          "degree_evidence_method": "individual_primary_record",
+          "degree_year": 1962
+        }
+      ],
+      "witness_changed": false,
+      "service_source": {
+        "url": "https://www.senate.gov/states/TN/senators.htm",
+        "bytes": 44798,
+        "sha256": "8aded65c060576044a49af86167d6b2c44d30c2f5cf50004f64a6db6c60d04e2"
+      },
+      "degree_year_audit_status": "verified"
+    },
+    {
+      "case_id": "senator_30",
+      "state": "Pennsylvania",
+      "state_code": "PA",
+      "school": "Harvard Kennedy School",
+      "original_witness": "Bob Casey / Pat Toomey",
+      "prompt": "Was there ever a US senator that represented Pennsylvania and whose alma mater was Harvard Kennedy School?",
+      "prompt_preserved": true,
+      "gold": true,
+      "audit_status": "verified",
+      "accepted_witnesses": [
+        {
+          "name": "John Fetterman",
+          "degree": "M.P.P.",
+          "graduation_year": 1999,
+          "education_source_url": "https://www.hks.harvard.edu/faculty-research/policy-topics/public-leadership-management/lieutenant-governor-pennsylvania",
+          "education_evidence": "Harvard Kennedy School MPP class of 1999; Senate service independently verified in the Senate directory.",
+          "directory_name": "John Fetterman (D)",
+          "bioguide_url": "https://bioguide.congress.gov/search/bio/F000479",
+          "term_begin": "Jan. 3, 2023",
+          "term_end": "Present",
+          "degree_evidence_method": "individual_primary_record",
+          "degree_year": 1999
+        }
+      ],
+      "witness_changed": true,
+      "service_source": {
+        "url": "https://www.senate.gov/states/PA/senators.htm",
+        "bytes": 40190,
+        "sha256": "13a5f9d378d793ddec61516d953a1037dc9e5add5bac01c792fdbf4c7bff2013"
+      },
+      "degree_year_audit_status": "verified"
+    }
+  ],
+  "verified_pairs": 30,
+  "prompt_changes": 0,
+  "witness_corrections": [
+    {
+      "case_id": "senator_22",
+      "original_witness": "Michael Bennet",
+      "verified_witness": "Ken Salazar"
+    },
+    {
+      "case_id": "senator_30",
+      "original_witness": "Bob Casey / Pat Toomey",
+      "verified_witness": "John Fetterman"
+    }
+  ],
+  "degree_year_verified_pairs": 30,
+  "degree_year_audit_status": "verified_with_one_explicit_institutional_inference",
+  "degree_year_inferences": [
+    "senator_13"
+  ]
+}

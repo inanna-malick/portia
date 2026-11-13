@@ -1,0 +1,23 @@
+hf_cache/
+.venv
+__pycache__/
+*.pyc
+.pytest_cache/
+*.safetensors
+*.bin
+*.pt
+*.pth
+!tests/fixtures/portia_capture_v3/**/*.safetensors
+!tests/fixtures/portia_capture_v3/**/*.pt
+
+.env
+.env.*
+
+*.egg-info/
+external/
+portia_runs/
+
+# Rust build artifacts
+target/
+
+.cargo/config.toml

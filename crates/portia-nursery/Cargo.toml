@@ -1,0 +1,18 @@
+[package]
+name = "portia-nursery"
+version.workspace = true
+edition.workspace = true
+license-file.workspace = true
+
+[dependencies]
+portia-core = { path = "../portia-core" }
+portia-compiler = { path = "../portia-compiler" }
+anyhow.workspace = true
+thiserror.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+recursion.workspace = true
+proptest.workspace = true
+tree-sitter.workspace = true
+tree-sitter-rust.workspace = true
+syn.workspace = true

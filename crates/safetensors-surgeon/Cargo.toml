@@ -1,0 +1,20 @@
+[package]
+name = "safetensors-surgeon"
+version.workspace = true
+edition.workspace = true
+license-file.workspace = true
+authors.workspace = true
+description = "Streaming, bounded-memory .safetensors shard editor for 2D matrix widening and additive patches without PyTorch."
+
+[dependencies]
+half.workspace = true
+memmap2.workspace = true
+safetensors.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+sha2.workspace = true
+tempfile.workspace = true
+thiserror.workspace = true
+
+[dev-dependencies]
+proptest.workspace = true

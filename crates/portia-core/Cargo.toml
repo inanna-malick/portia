@@ -1,0 +1,16 @@
+[package]
+name = "portia-core"
+version.workspace = true
+edition.workspace = true
+license-file.workspace = true
+
+[dependencies]
+anyhow.workspace = true
+thiserror.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+recursion.workspace = true
+
+[dev-dependencies]
+proptest.workspace = true
+

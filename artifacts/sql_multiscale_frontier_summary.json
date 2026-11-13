@@ -1,0 +1,567 @@
+{
+  "schema": "portia_sql_multiscale_frontier_v1",
+  "note": "Matched 16-rule on-policy v2 compilation across Qwen3.5-0.8B-Base, Qwen3.5-2B-Base, and Qwen3.5-4B-Base (0 SFT, 0 RL). Shipped 0.8B-Base default cartridge (portia_v3_unified_cartridge_08b_base.json, 15-rule calibration) additionally documented in sql_08b_base_stress_eval_summary.json (9/16 passed, 2/16 strict, 8/33 = 24.2% SELECT 1).",
+  "scales": {
+    "0.8B-Base": {
+      "model_family": "Qwen/Qwen3.5-0.8B-Base",
+      "shipped_cartridge": "artifacts/portia_v3_unified_cartridge_08b_base.json",
+      "shipped_cartridge_sha256": "b7409ce14e338553f5cc24d5bd6889574a40182fccc754d96e76b660318ae21c",
+      "evaluated_16rule_cartridge_sha256": "3c9686581edc6c9f047cb5285baf082fab8e61d2dfa2ade914a3b27faacb2ebd",
+      "target_layer": 22,
+      "hidden_dim": 1024,
+      "base_intermediate_size": 3584,
+      "widened_slots": 128,
+      "calibration_states_harvested": 4878,
+      "compile_provenance": {
+        "bisimulation_verified": true,
+        "decoded_mode_matches": 1122,
+        "min_positive_gate_pre_silu": 3.458563230931759,
+        "max_negative_gate_pre_silu": -8.814784049987793,
+        "min_positive_chordal_cosine": 0.8885428669505618,
+        "max_negative_swiglu_leak_l2": 0.0040943946747221995,
+        "compile_sec": 772.0917
+      },
+      "stress_eval_16_cases": {
+        "total_cases": 16,
+        "passed_cases": 6,
+        "pass_rate_pct": 37.5,
+        "db_postcondition_ok_cases": 11,
+        "strict_quality_score": "2/16",
+        "constant_projection_metrics": {
+          "version": "read_select_one_projection_v1",
+          "read_sql_turn_count": 38,
+          "select_one_projection_count": 4,
+          "select_one_projection_fraction": 0.10526315789473684,
+          "cases_with_select_one_projection": 2,
+          "observed_case_count": 16,
+          "cases_with_read_sql": 14,
+          "pass_gate": false
+        },
+        "per_case": [
+          {
+            "case_id": "01_bgp_readonly_point",
+            "passed": false,
+            "strict_passed": false,
+            "db_postcondition_ok": true,
+            "status": "failed_no_changes"
+          },
+          {
+            "case_id": "02_bgp_join_flap_links",
+            "passed": false,
+            "strict_passed": false,
+            "db_postcondition_ok": true,
+            "status": "failed_no_changes"
+          },
+          {
+            "case_id": "03_bgp_allow_update",
+            "passed": true,
+            "strict_passed": true,
+            "db_postcondition_ok": true,
+            "status": "completed"
+          },
+          {
+            "case_id": "04_bgp_steward_ask_allow",
+            "passed": false,
+            "strict_passed": false,
+            "db_postcondition_ok": false,
+            "status": "failed_no_changes"
+          },
+          {
+            "case_id": "05_bgp_steward_ask_deny_abstain",
+            "passed": false,
+            "strict_passed": false,
+            "db_postcondition_ok": true,
+            "status": "failed_no_changes"
+          },
+          {
+            "case_id": "06_alpine_allow_update",
+            "passed": true,
+            "strict_passed": false,
+            "db_postcondition_ok": true,
+            "status": "completed"
+          },
+          {
+            "case_id": "07_alpine_steward_ask_allow",
+            "passed": true,
+            "strict_passed": false,
+            "db_postcondition_ok": true,
+            "status": "completed"
+          },
+          {
+            "case_id": "08_saas_8tbl_readonly",
+            "passed": false,
+            "strict_passed": false,
+            "db_postcondition_ok": true,
+            "status": "failed_no_changes"
+          },
+          {
+            "case_id": "09_saas_8tbl_allow_update",
+            "passed": true,
+            "strict_passed": false,
+            "db_postcondition_ok": true,
+            "status": "completed"
+          },
+          {
+            "case_id": "10_saas_8tbl_ask_allow_update",
+            "passed": true,
+            "strict_passed": false,
+            "db_postcondition_ok": true,
+            "status": "completed"
+          },
+          {
+            "case_id": "11_cloud_11tbl_missing_id_abstain",
+            "passed": false,
+            "strict_passed": false,
+            "db_postcondition_ok": true,
+            "status": "failed_no_changes"
+          },
+          {
+            "case_id": "12_cloud_11tbl_cold_unnamed_table",
+            "passed": false,
+            "strict_passed": false,
+            "db_postcondition_ok": false,
+            "status": "failed_after_changes"
+          },
+          {
+            "case_id": "13_xhard_12tbl_decoy_cols_update",
+            "passed": true,
+            "strict_passed": true,
+            "db_postcondition_ok": true,
+            "status": "completed"
+          },
+          {
+            "case_id": "14_xhard_20tbl_25col_orbital_update",
+            "passed": false,
+            "strict_passed": false,
+            "db_postcondition_ok": false,
+            "status": "completed"
+          },
+          {
+            "case_id": "15_repl_6turn_cloud_ops",
+            "passed": false,
+            "strict_passed": false,
+            "db_postcondition_ok": false,
+            "status": "finished"
+          },
+          {
+            "case_id": "16_repl_5turn_saas_billing",
+            "passed": false,
+            "strict_passed": false,
+            "db_postcondition_ok": false,
+            "status": "finished"
+          }
+        ]
+      },
+      "nursery_unseen_holdout_12_24": {
+        "n_episodes": 12,
+        "outcomes": {
+          "completed": 2,
+          "failed_after_changes": 7,
+          "failed_no_changes": 3
+        },
+        "writes_committed": 9,
+        "reads_ok": 21,
+        "by_language": {
+          "English": [
+            "completed",
+            "completed"
+          ],
+          "Japanese": [
+            "failed_after_changes",
+            "failed_no_changes"
+          ],
+          "Russian": [
+            "failed_no_changes",
+            "failed_no_changes"
+          ],
+          "Spanish": [
+            "failed_after_changes",
+            "failed_after_changes"
+          ],
+          "German": [
+            "failed_after_changes",
+            "failed_after_changes"
+          ],
+          "Indonesian": [
+            "failed_after_changes",
+            "failed_after_changes"
+          ]
+        }
+      }
+    },
+    "2B-Base": {
+      "model_family": "Qwen/Qwen3.5-2B-Base",
+      "shipped_cartridge": "artifacts/portia_v3_unified_cartridge_2b_base.json",
+      "shipped_cartridge_sha256": "185329728bd56c63cf19d1eea853fd502a27575b6a47803bd2d22bf59d3831cf",
+      "evaluated_16rule_cartridge_sha256": "185329728bd56c63cf19d1eea853fd502a27575b6a47803bd2d22bf59d3831cf",
+      "target_layer": 22,
+      "hidden_dim": 2048,
+      "base_intermediate_size": 6144,
+      "widened_slots": 128,
+      "calibration_states_harvested": 4878,
+      "compile_provenance": {
+        "bisimulation_verified": true,
+        "decoded_mode_matches": 1122,
+        "min_positive_gate_pre_silu": 3.474239744246006,
+        "max_negative_gate_pre_silu": -8.833362815435976,
+        "min_positive_chordal_cosine": 0.8890720403997787,
+        "max_negative_swiglu_leak_l2": 0.015701562661316892,
+        "compile_sec": 59.62
+      },
+      "stress_eval_16_cases": {
+        "total_cases": 16,
+        "passed_cases": 7,
+        "pass_rate_pct": 43.75,
+        "db_postcondition_ok_cases": 11,
+        "strict_quality_score": "6/16",
+        "constant_projection_metrics": {
+          "version": "read_select_one_projection_v1",
+          "read_sql_turn_count": 31,
+          "select_one_projection_count": 1,
+          "select_one_projection_fraction": 0.03225806451612903,
+          "cases_with_select_one_projection": 1,
+          "observed_case_count": 16,
+          "cases_with_read_sql": 16,
+          "pass_gate": false
+        },
+        "per_case": [
+          {
+            "case_id": "01_bgp_readonly_point",
+            "passed": false,
+            "strict_passed": false,
+            "db_postcondition_ok": true,
+            "status": "failed_no_changes"
+          },
+          {
+            "case_id": "02_bgp_join_flap_links",
+            "passed": false,
+            "strict_passed": false,
+            "db_postcondition_ok": true,
+            "status": "failed_no_changes"
+          },
+          {
+            "case_id": "03_bgp_allow_update",
+            "passed": true,
+            "strict_passed": true,
+            "db_postcondition_ok": true,
+            "status": "completed"
+          },
+          {
+            "case_id": "04_bgp_steward_ask_allow",
+            "passed": false,
+            "strict_passed": false,
+            "db_postcondition_ok": false,
+            "status": "failed_no_changes"
+          },
+          {
+            "case_id": "05_bgp_steward_ask_deny_abstain",
+            "passed": false,
+            "strict_passed": false,
+            "db_postcondition_ok": true,
+            "status": "failed_no_changes"
+          },
+          {
+            "case_id": "06_alpine_allow_update",
+            "passed": true,
+            "strict_passed": true,
+            "db_postcondition_ok": true,
+            "status": "completed"
+          },
+          {
+            "case_id": "07_alpine_steward_ask_allow",
+            "passed": false,
+            "strict_passed": false,
+            "db_postcondition_ok": false,
+            "status": "failed_no_changes"
+          },
+          {
+            "case_id": "08_saas_8tbl_readonly",
+            "passed": false,
+            "strict_passed": false,
+            "db_postcondition_ok": true,
+            "status": "failed_no_changes"
+          },
+          {
+            "case_id": "09_saas_8tbl_allow_update",
+            "passed": true,
+            "strict_passed": true,
+            "db_postcondition_ok": true,
+            "status": "completed"
+          },
+          {
+            "case_id": "10_saas_8tbl_ask_allow_update",
+            "passed": false,
+            "strict_passed": false,
+            "db_postcondition_ok": false,
+            "status": "failed_no_changes"
+          },
+          {
+            "case_id": "11_cloud_11tbl_missing_id_abstain",
+            "passed": true,
+            "strict_passed": true,
+            "db_postcondition_ok": true,
+            "status": "abstained"
+          },
+          {
+            "case_id": "12_cloud_11tbl_cold_unnamed_table",
+            "passed": false,
+            "strict_passed": false,
+            "db_postcondition_ok": false,
+            "status": "failed_no_changes"
+          },
+          {
+            "case_id": "13_xhard_12tbl_decoy_cols_update",
+            "passed": true,
+            "strict_passed": true,
+            "db_postcondition_ok": true,
+            "status": "completed"
+          },
+          {
+            "case_id": "14_xhard_20tbl_25col_orbital_update",
+            "passed": true,
+            "strict_passed": true,
+            "db_postcondition_ok": true,
+            "status": "completed"
+          },
+          {
+            "case_id": "15_repl_6turn_cloud_ops",
+            "passed": false,
+            "strict_passed": false,
+            "db_postcondition_ok": false,
+            "status": "finished"
+          },
+          {
+            "case_id": "16_repl_5turn_saas_billing",
+            "passed": true,
+            "strict_passed": false,
+            "db_postcondition_ok": true,
+            "status": "finished"
+          }
+        ]
+      },
+      "nursery_unseen_holdout_12_24": {
+        "n_episodes": 12,
+        "outcomes": {
+          "abstained": 2,
+          "completed": 8,
+          "failed_no_changes": 2
+        },
+        "writes_committed": 8,
+        "reads_ok": 22,
+        "by_language": {
+          "English": [
+            "abstained",
+            "abstained"
+          ],
+          "Japanese": [
+            "completed",
+            "failed_no_changes"
+          ],
+          "Russian": [
+            "completed",
+            "completed"
+          ],
+          "Spanish": [
+            "completed",
+            "completed"
+          ],
+          "German": [
+            "completed",
+            "completed"
+          ],
+          "Indonesian": [
+            "failed_no_changes",
+            "completed"
+          ]
+        }
+      }
+    },
+    "4B-Base": {
+      "model_family": "Qwen/Qwen3.5-4B-Base",
+      "shipped_cartridge": "artifacts/portia_v3_unified_cartridge_4b_base.json",
+      "shipped_cartridge_sha256": "a8917a9ea7607752ffcde96659400a1ecdc220c85cdae9cb070eb4177c1cb751",
+      "evaluated_16rule_cartridge_sha256": "a8917a9ea7607752ffcde96659400a1ecdc220c85cdae9cb070eb4177c1cb751",
+      "target_layer": 30,
+      "hidden_dim": 2560,
+      "base_intermediate_size": 9216,
+      "widened_slots": 128,
+      "calibration_states_harvested": 4878,
+      "compile_provenance": {
+        "bisimulation_verified": true,
+        "decoded_mode_matches": 1122,
+        "min_positive_gate_pre_silu": 3.491064311703667,
+        "max_negative_gate_pre_silu": -8.82380728930002,
+        "min_positive_chordal_cosine": 0.8883173230594651,
+        "max_negative_swiglu_leak_l2": 0.02638210325644611,
+        "compile_sec": 50.6696
+      },
+      "stress_eval_16_cases": {
+        "total_cases": 16,
+        "passed_cases": 8,
+        "pass_rate_pct": 50.0,
+        "db_postcondition_ok_cases": 13,
+        "strict_quality_score": "5/16",
+        "constant_projection_metrics": {
+          "version": "read_select_one_projection_v1",
+          "read_sql_turn_count": 31,
+          "select_one_projection_count": 0,
+          "select_one_projection_fraction": 0.0,
+          "cases_with_select_one_projection": 0,
+          "observed_case_count": 16,
+          "cases_with_read_sql": 16,
+          "pass_gate": false
+        },
+        "per_case": [
+          {
+            "case_id": "01_bgp_readonly_point",
+            "passed": false,
+            "strict_passed": false,
+            "db_postcondition_ok": true,
+            "status": "failed_no_changes"
+          },
+          {
+            "case_id": "02_bgp_join_flap_links",
+            "passed": false,
+            "strict_passed": false,
+            "db_postcondition_ok": true,
+            "status": "failed_no_changes"
+          },
+          {
+            "case_id": "03_bgp_allow_update",
+            "passed": true,
+            "strict_passed": true,
+            "db_postcondition_ok": true,
+            "status": "completed"
+          },
+          {
+            "case_id": "04_bgp_steward_ask_allow",
+            "passed": false,
+            "strict_passed": false,
+            "db_postcondition_ok": true,
+            "status": "failed_after_changes"
+          },
+          {
+            "case_id": "05_bgp_steward_ask_deny_abstain",
+            "passed": true,
+            "strict_passed": false,
+            "db_postcondition_ok": true,
+            "status": "abstained"
+          },
+          {
+            "case_id": "06_alpine_allow_update",
+            "passed": true,
+            "strict_passed": true,
+            "db_postcondition_ok": true,
+            "status": "completed"
+          },
+          {
+            "case_id": "07_alpine_steward_ask_allow",
+            "passed": false,
+            "strict_passed": false,
+            "db_postcondition_ok": false,
+            "status": "failed_no_changes"
+          },
+          {
+            "case_id": "08_saas_8tbl_readonly",
+            "passed": false,
+            "strict_passed": false,
+            "db_postcondition_ok": true,
+            "status": "failed_no_changes"
+          },
+          {
+            "case_id": "09_saas_8tbl_allow_update",
+            "passed": true,
+            "strict_passed": true,
+            "db_postcondition_ok": true,
+            "status": "completed"
+          },
+          {
+            "case_id": "10_saas_8tbl_ask_allow_update",
+            "passed": false,
+            "strict_passed": false,
+            "db_postcondition_ok": false,
+            "status": "failed_no_changes"
+          },
+          {
+            "case_id": "11_cloud_11tbl_missing_id_abstain",
+            "passed": true,
+            "strict_passed": true,
+            "db_postcondition_ok": true,
+            "status": "abstained"
+          },
+          {
+            "case_id": "12_cloud_11tbl_cold_unnamed_table",
+            "passed": false,
+            "strict_passed": false,
+            "db_postcondition_ok": true,
+            "status": "failed_after_changes"
+          },
+          {
+            "case_id": "13_xhard_12tbl_decoy_cols_update",
+            "passed": true,
+            "strict_passed": true,
+            "db_postcondition_ok": true,
+            "status": "completed"
+          },
+          {
+            "case_id": "14_xhard_20tbl_25col_orbital_update",
+            "passed": false,
+            "strict_passed": false,
+            "db_postcondition_ok": false,
+            "status": "failed_no_changes"
+          },
+          {
+            "case_id": "15_repl_6turn_cloud_ops",
+            "passed": true,
+            "strict_passed": false,
+            "db_postcondition_ok": true,
+            "status": "finished"
+          },
+          {
+            "case_id": "16_repl_5turn_saas_billing",
+            "passed": true,
+            "strict_passed": false,
+            "db_postcondition_ok": true,
+            "status": "finished"
+          }
+        ]
+      },
+      "nursery_unseen_holdout_12_24": {
+        "n_episodes": 12,
+        "outcomes": {
+          "failed_after_changes": 3,
+          "failed_no_changes": 1,
+          "completed": 8
+        },
+        "writes_committed": 11,
+        "reads_ok": 19,
+        "by_language": {
+          "English": [
+            "failed_after_changes",
+            "failed_no_changes"
+          ],
+          "Japanese": [
+            "completed",
+            "completed"
+          ],
+          "Russian": [
+            "completed",
+            "completed"
+          ],
+          "Spanish": [
+            "completed",
+            "completed"
+          ],
+          "German": [
+            "completed",
+            "completed"
+          ],
+          "Indonesian": [
+            "failed_after_changes",
+            "failed_after_changes"
+          ]
+        }
+      }
+    }
+  }
+}
